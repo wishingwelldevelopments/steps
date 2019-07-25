@@ -1,0 +1,214 @@
+@font-face {
+    font-family: rale;
+    src: url("https://cdn.rawgit.com/wishingwelldevelopments/requirements/9cf19321/sb.ttf");
+}
+@font-face {
+    font-family: ralebold;
+    src: url("https://cdn.rawgit.com/wishingwelldevelopments/requirements/9cf19321/eb.ttf");
+}
+*{
+	margin:0px;
+	padding:0px;
+	font-family: rale, sans-serif;
+}
+body{
+background-color: #f7f7f7;
+background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+position:relative;
+}
+.hero{
+	width:100%;
+	height:200px;
+	background-image:url("https://res.cloudinary.com/wwd/image/upload/v1530100349/stepstowardshealth/banner.jpg");
+	background-position:center;
+	background-size:cover;
+	position:relative;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+.hero::before{
+	content:'';
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.2);
+	top:0px;
+	left:0px;
+}
+.contact{
+	background-color:#f7f7f7;
+	border:10px solid white;
+	width:900px;
+	padding:30px;
+	display:grid;
+	grid-template-columns:1fr 1fr 1fr 1fr;
+	margin:20px auto;
+	box-sizing:border-box;
+}
+.contact .item{
+	margin-right:10px;
+	padding:10px;
+	box-sizing:border-box;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	text-align:center;
+	flex-direction:column;
+	cursor:pointer;
+}
+.item i {
+	font-size:30px;
+	margin-bottom:7px;
+}
+.item p {
+	font-weight:600;
+	font-size:18px;
+}
+.imgs{
+	z-index:9999999;
+	width:900px;
+}
+#caroline{
+	border:10px solid white;
+	width:150px;
+	box-sizing:border-box;
+	margin-right:-5px;
+}
+#logo{
+	border:10px solid white;
+	width:150px;
+	box-sizing:border-box;
+	border-left:0px;
+}
+.container{
+	width:900px;
+	margin:0px auto;
+	background-color:white;
+	padding:40px;
+	box-sizing:border-box;
+	margin-bottom:20px;
+}
+.container p {
+	font-size:18px;
+	line-height:28px;
+	letter-spacing:0.5px;
+	color:#484848;
+	margin-bottom:20px;
+}
+.container h1 {
+	font-size:50px;
+	margin-bottom:20px;
+	color:#333333;
+	font-family: ralebold, sans-serif;
+}
+@media only screen and (max-width: 932px) {
+	.container, .contact{
+		width:100%;
+	}
+	.contact{
+		grid-template-columns:1fr 1fr;	
+		background-color:white;
+		margin:0px auto;
+	}
+	.contact .item{
+		border-bottom:2px solid #ececec;
+		border-right:2px solid #ececec;
+		margin:0px;
+		padding:20px;
+	}
+	.imgs{
+		width:300px;
+	}
+	.container{
+		margin-bottom:0px;
+	}
+}
+li{
+	font-size:20px;
+	margin-bottom:5px;
+	color:#484848;
+}
+li{
+   list-style-type:none;
+}
+li::before{
+	content: "• ";
+	color:#484848;
+	padding:10px;
+}
+.gohome{
+	position:fixed;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	text-align:center;
+	flex-direction:column;
+	padding:10px;
+	bottom:20px;
+	z-index:9999999;
+	box-shadow:0px 0px 25px rgba(0,0,0,0.1);
+	cursor:pointer;
+	padding-right:20px;
+	right:0px;
+	background-color:white;
+	box-sizing:border-box;
+	transition:all 0.3s;
+}
+.gohome i {
+	font-size:13px;
+}
+.gohome h1 {
+	font-size:14px;
+	font-weight:600;
+}
+.price h2{
+	font-size:40px;
+	margin:30px 0px;
+	color:#333333;
+}
+.prices{
+	width:100%;
+	display:grid;
+	grid-template-columns:1fr 1fr 1fr;
+}
+.ptile{
+	border-right:2px solid #e2e2e2;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	text-align:center;
+	flex-direction:column;
+	padding:20px;
+	box-sizing:border-box;
+	background-color:#f9f9f9;
+}
+.ptile h1{
+	font-size:30px;
+	margin:0px;
+}
+.pline{
+	width:100px;
+	background-color:#b3b3b3;
+	margin:10px 0px;
+	height:2px;
+}
+.ptile h2{
+	font-size:30px;
+	margin:0px;
+}
+.ptile:nth-child(3){
+	border-right:none;
+	border-bottom:none;
+}
+@media only screen and (max-width: 700px) {
+	.prices{
+		grid-template-columns:1fr;
+	}
+	.ptile{
+		border-right:none;
+		border-bottom:2px solid #e2e2e2;
+	}
+}

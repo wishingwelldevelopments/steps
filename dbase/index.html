@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Database</title>
+		<link rel="stylesheet" href="database.css" type="text/css" charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+			<div class="lookup-area">
+			</div>
+			<div class="popup" id="content">
+			</div>
+			<div id="editor"></div>
+		</div>
+		<div class="nav">
+			<p id="status">Waiting For Response...</p>
+			<input type="text" placeholder="Search Infoceutical By ID : " id="infosearch"/>
+			<a href="#" id="compile">Preview Document</a>
+		</div>
+		<div class="name">
+			<div class="ncont">
+				<h1>Client Recommendation</h1>
+				<input type="text" placeholder="Enter Client Fullname :" id="cliname" autofocus/>
+				<a href="#" id="adcli">Add Client</a>
+				<p id="date">Created By Sam Winborn-Sharp</p>
+			</div>
+		</div>
+	</body>
+	<script charset="utf-8" src="https://cdn.jsdelivr.net/npm/js-html2pdf@1.1.4/lib/html2pdf.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script charset="utf-8">
+		var infos = [];
+		var reg = [];
+		var client = "";
+		var warn = "";
+		var deck = [];
+
+		$("#adcli").click(function(){createClient()});
+		$('body').keydown(function(e){if(e.keyCode == 13){createClient()}});
+		function createClient(){
+			cliname = $("#cliname").val();
+			$('#status').text("Added Client " + cliname);
+			if(cliname == ""){
+				$('#status').text("No Client Added");
+			}
+			$(".name").hide();
+			$(document).ready(function(){
+				window.addEventListener("keydown", function(e) {
+				// space and arrow keys
+				if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+					e.preventDefault();
+				}
+				}, false);
+				 $('body').keydown(function(e){
+					if(e.keyCode == 39){
+						$('.data.current').addClass('selected');
+						$('.data.current').find('input:checkbox:first').prop('checked',true);
+					}
+					if(e.keyCode == 37){
+						$('.data.current').removeClass('selected');
+						$('.data.current').find('input:checkbox:first').prop('checked',false);
+					}
+				});
+			});
+			$("#infosearch").focus();
+		}
+		$.getJSON("data.json", function(result){
+			for (var i = 0; i < result.length; i++){
+					console.log(result.length + " Infoceuticals Loaded");
+					dre = result[i].id;
+					drei = result[i].TITLE;
+					drey = result[i].description.split(" ").splice(0,20).join(" ")+"...";
+					$('.lookup-area').append("<div class='data' id=" + dre + "><h1>Title : " + drei + "</h1><p>Description : " + drey + "</p><label class='foo'><input type='checkbox' class='checky' value="+dre+" name='info'/></label>"+"</div>");
+			}
+		$("#compile").click(function(){
+
+			$('.container').append('<div id="downc"><a href="#" id="x">X</a><a href="#" id="down"></i>Download and Save</a></div>');
+
+			$.each($("input[name='info']:checked"), function(){
+				infos.push($(this).val());
+			});
+
+			$('.popup').css('display', 'block');
+			$('.container').addClass('before');
+			client = "<h2 style='margin:0px;font-size:17px;'>Recommendations for "+cliname+"</h2>";
+			clientsty = "<h2 style='margin:0px;margin-top:20px;margin-bottom:80px;font-size:17px;'>Recommendations for "+cliname+"</h2>";
+			$('.popup').append(client);
+
+			for(var i = 0;i < result.length;i ++) {
+				for(var j = 0;j < result.length;j ++) {
+					if(result[i].id == infos[j]){
+						drei = result[i].TITLE;
+						drey = result[i].description;
+						drey = drey.charAt(0).toUpperCase() + drey.slice(1);
+						newdesc = "<h1 style='color:#1b1b1b;margin-bottom:10px;font-size:16px;text-decoration:underline;'>"+drei+"</h1>"+"<p style='font-size:16px;line-height:26px;'>"+drey+"</p>";
+						newdesksty = "<h1 style='color:#1b1b1b;margin-bottom:10px;font-size:16px;text-decoration:underline;'>"+drei+"</h1>"+"<p style='font-size:16px;line-height:26px;margin-bottom:50px;'>"+drey+"</p>";
+						deck.push(newdesksty);
+						$('.popup').append(newdesc);
+					}
+				}
+			}
+warn = "</br>"+"<h2 style='font-size:16px;color:#3a3a3a;margin-top:20px;'>NES Health TM and Infoceuticals TM are registered trademarks. Updated Feb 20th, 2019. Matches are bio-energetic only. NES Health and Infoceuticals do not diagnose, treat, prevent or cure medical diseases.</h2>";
+$('.popup').append(warn);
+			$("#down").click(function(){
+var exdeck = deck.join(" ");
+var img = '<img src="../cover.png" style="position:absolute;top:0px;right:0px;" width="280px" height="auto " alt="">';
+var expd = img.concat(clientsty).concat('', exdeck).concat('', warn);
+var options = {
+  filename: cliname+' Recommendations.pdf'
+};
+options.source = expd;
+options.download = true;
+html2pdf.getPdf(options);
+			});
+		});
+				 $('#infosearch').keydown(function(e){
+					if(e.keyCode == 13){
+						$('.data').removeClass('current');
+						var inpval = $("#infosearch").val();
+						$('#'+inpval+'').addClass('current');
+						$('.current')[0].scrollIntoView();
+						$('#infosearch').val('');
+					}
+				});
+		});
+		 $('body').keyup(function(e){
+			if(e.keyCode == 27){
+				$('.popup').css('display', 'none');
+				$('.popup').html('');
+				$('.container').removeClass('before');
+				$('#downc').remove();
+				infos = [];
+				reg = [];
+				warn = "";
+				deck = [];
+			$("#infosearch").focus();
+			}
+		});
+		$(document).on('click', '#x', function(){
+				$('.popup').css('display', 'none');
+				$('.popup').html('');
+				$('.container').removeClass('before');
+				$('#downc').remove();
+				infos = [];
+				reg = [];
+				warn = "";
+				deck = [];
+			$("#infosearch").focus();
+		});
+		$(document).on('click', '.data', function(){
+			var $this = $(this);
+			$this.toggleClass('selected');
+		});
+	</script>
+</html>
