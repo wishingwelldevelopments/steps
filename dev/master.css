@@ -1,0 +1,298 @@
+*{
+	margin:0px;
+	padding:0px;
+	border:0px;
+	outline:0px;
+	font-family: 'Inter', sans-serif;
+}
+.navigation{
+	width:100%;
+	position:fixed;
+	border-top: 2px solid #0fbd8f;
+	background-color:#fffffff7;
+	z-index:99999;
+	border-bottom:1px solid #ece7e7;
+}
+.nav-container{
+	width:1300px;
+	margin:0px auto;
+	display:grid;
+	padding:15px;
+	box-sizing:border-box;
+	grid-template-columns:1fr 1fr;
+}
+.nav-item img{
+	width:25px;
+	height:auto;
+}
+.nav-item h1{
+	font-size:15px;
+	position:relative;
+	color:#515151;
+	top:1px;
+	margin-left:15px;
+}
+.nav-item a{
+	font-size:13px;
+	color:#515151;
+	position:relative;
+	top:2px;
+	margin-left:20px;
+	text-decoration:none;
+	transition:color 0.3s;
+}
+.nav-item a:hover{
+	color:black;
+	
+}
+.nav-item{
+	display:flex;
+}
+#btns{
+	justify-content:flex-end;
+}
+.hero-section{
+	width:100%;
+	height:500px;
+	background-image:url('back.jpg');
+	background-size:cover;
+	background-position:center;
+	position:relative;
+}
+.hero-section::before{
+	content:'';
+	background-color:#f6fffdb5;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+#act{
+	color:#0fbd8f;
+}
+.hero-container{
+	width:1300px;
+	padding-left:15px;
+	box-sizing:border-box;	
+	height:100%;
+	margin:0px auto;
+	position:relative;
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+}
+.hero-container h1{
+	color:#333333;
+	margin-bottom:10px;
+}
+.hero-container p{
+	color:#6b6b6b;
+}
+.hero-container a{
+	font-size:13px;
+	width:95px;
+	color:white;
+	border-radius:4px;
+	font-weight:600;
+	background-color:#0fbd8f;
+	text-decoration:none;
+	padding:10px 25px;
+}
+#hero-btns{
+	position:relative;
+	top:25px;
+}
+.hero-container i{
+	margin-left:5px;
+}
+#hact{
+	background-color: #333333;
+	color: white;
+}
+.services{
+	width:100%;
+}
+.services-container{
+	width:1300px;
+	height:100%;
+	display:grid;
+	grid-template-columns:1fr 1fr 1fr;
+	grid-gap:50px;
+	padding:50px 0px;
+	box-sizing:border-box;
+	margin:0px auto;
+}
+.services-item{
+	border-right: 2px solid whitesmoke;
+	padding:20px;
+	box-sizing:border-box;
+}
+.services-item h1{
+	font-size:17px;
+	color:#484848;
+	font-weight:600;
+	margin-bottom:20px;
+}
+.services-item p{
+	font-size:15px;
+	color:#797979;
+	line-height:25px;
+}
+.services-item img{
+	width:55px;
+	height:auto;
+	margin-bottom:20px;
+}
+.about-section{
+	width:100%;
+	height:500px;
+	background-color:whitesmoke;
+	//border-bottom: 10px solid #0fbd8f;
+}
+.about-container{
+	width:1300px;
+	height:100%;
+	margin:0px auto;
+	display:grid;
+	grid-template-columns:1fr 1fr;
+}
+.about-item{
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+}
+.about-item h1{
+	color:#404040;
+	margin-bottom:20px;
+}
+.about-item p{
+	color:#757575;
+	line-height:28px;
+}
+.about-item a{
+	font-size: 15px;
+	font-weight:600;
+	color: white;
+	background-color: #0fbd8f;
+	text-decoration: none;
+	border-radius: 4px;
+	position: relative;
+	top: 30px;
+	width: 150px;
+	padding: 10px 30px;
+}
+.about-item i{
+	margin-left:10px;
+}
+.about-item img{
+	border: 10px solid #0fbd8f2e;
+	border-radius:4px;
+}
+.sec{
+	width:100%;
+	height:425px;
+	background-image:url('https://couch.org.au/fileadmin/user_upload/Hero-Images/COUCH-Cancer-Charity-Care-Cairns-Hero-6-v2.jpg');
+	background-size:cover;
+	background-position:center;
+	position:relative;
+}
+.sec::before{
+	content:'';
+	background-color:#0fbd8ff0;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+.sec-container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	text-align:center;
+	width:1300px;
+	height:100%;
+	position:relative;
+	margin:0px auto;
+}
+.sec-container h1{
+	color:white;
+	margin-bottom:10px;
+}
+.sec-container p{
+	color:#ffffffd1;
+	margin-bottom:10px;
+	width:800px;
+	line-height:27px;
+}
+.sec-container a{
+	width:100px;
+	font-size:13px;
+	color:black;
+	background-color:white;
+	text-decoration:none;
+	padding:10px 25px;
+	position:relative;
+	top:20px;
+	border-radius:4px;
+	font-weight:600;
+}
+
+.sec-container i{
+	margin-left:10px;
+	transition:margin-left 0.2s;
+}
+.sec-container a:hover i{
+	margin-left:20px;
+}
+.footer{
+	width:100%;
+	background-color:#16b88a;
+	padding:15px;
+	box-sizing:border-box;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	text-align:center;
+}
+.footer #wwd{
+	text-decoration:none;
+	font-weight:700;
+	color:white;
+	font-size:11px;
+}
+.footer .icns, .footer .icns a{
+	color:#95f5d9;
+	text-decoration:none;
+	font-size:11px;
+}
+.hours{
+	width:100%;
+	height:400px;
+	background-color:white;
+	padding:50px;
+	box-sizing:border-box;
+}
+.hour-container{
+	margin:0px auto;
+	width:1300px;
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	height:100%;
+}
+.hour-item{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	text-align:center;
+	border-right:2px solid whitesmoke;
+}
+.hour-item h1{
+    color: #565656;
+    font-size: 17px;
+    font-weight: 600;
+}
